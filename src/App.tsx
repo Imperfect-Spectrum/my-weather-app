@@ -29,7 +29,7 @@ function App() {
       <div
         className={`bg-cover bg-bottom shadow-xl ${getBg(
           data?.timezone
-        )} min-h-screen max-h-full w-full min-w-0 mx-auto shadow-lg md:w-1/3  md:min-w-970px`}
+        )} min-h-screen max-h-full w-full sm:w-[25%] min-w-0 mx-auto shadow-lg`}
       >
         <main className="min-h-[10%] p-[25px]">
           <input

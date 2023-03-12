@@ -11,7 +11,7 @@ export const Options = ({ data }: { data: Response }) => {
       </div>
       <div className="flex items-center flex-wrap justify-around gap-3">
         <div
-          className={`w-[110px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
+          className={`min-w-[120px] w-[30%] h-[30%] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
             data?.timezone
           )}`}
         >
@@ -24,7 +24,7 @@ export const Options = ({ data }: { data: Response }) => {
           <p className="text-sm text-white font-medium">Wind(m/s)</p>
         </div>
         <div
-          className={`w-[110px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
+          className={`min-w-[120px] w-[30%] h-[30%] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
             data?.timezone
           )}`}
         >
@@ -37,20 +37,20 @@ export const Options = ({ data }: { data: Response }) => {
           <p className="text-sm text-white font-medium">Precipitation(%)</p>
         </div>
         <div
-          className={`w-[110px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
+          className={`min-w-[120px] w-[30%] h-[30%] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
             data?.timezone
           )}`}
         >
           <div className="flex items-center flex-wrap justify-around gap-x-3">
             <SvgSelector id={"pres"} />
             <p className="text-xl text-white font-medium">
-              {data?.data[0].pres}
+              {Math.round(data?.data[0].pres)}
             </p>
           </div>
           <p className="text-sm text-white font-medium">pressure(mb)</p>
         </div>
         <div
-          className={`w-[110px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
+          className={`min-w-[120px] w-[30%] h-[30%] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
             data?.timezone
           )}`}
         >
@@ -61,7 +61,7 @@ export const Options = ({ data }: { data: Response }) => {
           <p className="text-sm text-white font-medium">humidity(%)</p>
         </div>
         <div
-          className={`w-[110px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
+          className={`min-w-[120px] w-[30%] h-[30%] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
             data?.timezone
           )}`}
         >
@@ -75,14 +75,14 @@ export const Options = ({ data }: { data: Response }) => {
         </div>
 
         <div
-          className={`w-[110px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
+          className={`min-w-[120px] w-[30%] h-[30%] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
             data?.timezone
           )}`}
         >
           <div className="flex items-center flex-wrap justify-around gap-x-3">
             <SvgSelector id={"vis"} />
             <p className="text-xl text-white font-medium">
-              {data?.data[0].vis}
+              {Math.round(data?.data[0].vis)}
             </p>
           </div>
           <p className="text-sm text-white font-medium">Visibility(km)</p>
