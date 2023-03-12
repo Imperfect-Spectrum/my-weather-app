@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { request } from "./api";
+import { SvgSelector } from "./assets/svgSelector";
 
 import { Information } from "./components/information";
 import { getBg } from "./lib";
@@ -31,16 +32,20 @@ function App() {
           data?.timezone
         )} min-h-screen max-h-full w-full sm:w-[25%] min-w-0 mx-auto shadow-lg`}
       >
-        <main className="min-h-[10%] p-[25px]">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="w-full appearance-none bg-transparent border-none outline-none p-[10px] mb-[30px] bg-slate-200 hover:bg-slate-300 shadow-xl rounded-xl "
-            onChange={(e) => setQuery(e.target.value)}
-            value={query}
-            onKeyDown={search}
-          ></input>
-
+        <main className="min-h-[10%] p-[20px]">
+          <div className="flex justify-center items-center">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-full appearance-none bg-transparent border-none outline-none p-[10px] mb-[0px] mr-[10px] bg-slate-200 hover:bg-slate-300 shadow-xl rounded-xl "
+              onChange={(e) => setQuery(e.target.value)}
+              value={query}
+              onKeyDown={search}
+            ></input>
+            <button className="flex justify-center items-center">
+              <SvgSelector id={"geo"} />
+            </button>
+          </div>
           {data?.city_name && <Information data={data} />}
         </main>
       </div>
