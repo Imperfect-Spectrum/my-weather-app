@@ -1,6 +1,6 @@
 import { Response } from "../../../types";
-import { SvgSelector } from "../../../assets/svgSelector";
-import { getColor } from "../../../lib";
+import { SvgSelector } from "../../../lib/svgSelector";
+import { getColor, getWeatherType } from "../../../lib";
 
 export const Options = ({ data }: { data: Response }) => {
   return (
@@ -11,8 +11,9 @@ export const Options = ({ data }: { data: Response }) => {
       </div>
       <div className="flex items-center flex-wrap justify-around gap-3">
         <div
-          className={`min-w-[120px] w-[30%] h-[30%] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
-            data?.timezone
+          className={`w-[100px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
+            data?.timezone,
+            getWeatherType(data?.data[0].weather.code)
           )}`}
         >
           <div className="flex items-center flex-wrap justify-around gap-x-3">
@@ -24,8 +25,9 @@ export const Options = ({ data }: { data: Response }) => {
           <p className="text-sm text-white font-medium">Wind(m/s)</p>
         </div>
         <div
-          className={`min-w-[120px] w-[30%] h-[30%] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
-            data?.timezone
+          className={`w-[100px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
+            data?.timezone,
+            getWeatherType(data?.data[0].weather.code)
           )}`}
         >
           <div className="flex items-center flex-wrap justify-around gap-x-3">
@@ -37,8 +39,9 @@ export const Options = ({ data }: { data: Response }) => {
           <p className="text-sm text-white font-medium">Precipitation(%)</p>
         </div>
         <div
-          className={`min-w-[120px] w-[30%] h-[30%] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
-            data?.timezone
+          className={`w-[100px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
+            data?.timezone,
+            getWeatherType(data?.data[0].weather.code)
           )}`}
         >
           <div className="flex items-center flex-wrap justify-around gap-x-3">
@@ -50,8 +53,9 @@ export const Options = ({ data }: { data: Response }) => {
           <p className="text-sm text-white font-medium">pressure(mb)</p>
         </div>
         <div
-          className={`min-w-[120px] w-[30%] h-[30%] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
-            data?.timezone
+          className={`w-[100px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
+            data?.timezone,
+            getWeatherType(data?.data[0].weather.code)
           )}`}
         >
           <div className="flex items-center flex-wrap justify-around gap-x-3">
@@ -61,8 +65,9 @@ export const Options = ({ data }: { data: Response }) => {
           <p className="text-sm text-white font-medium">humidity(%)</p>
         </div>
         <div
-          className={`min-w-[120px] w-[30%] h-[30%] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
-            data?.timezone
+          className={`w-[100px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
+            data?.timezone,
+            getWeatherType(data?.data[0].weather.code)
           )}`}
         >
           <div className="flex items-center flex-wrap justify-around gap-x-3">
@@ -73,10 +78,10 @@ export const Options = ({ data }: { data: Response }) => {
           </div>
           <p className="text-sm text-white font-medium">Cloudiness(%)</p>
         </div>
-
         <div
-          className={`min-w-[120px] w-[30%] h-[30%] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
-            data?.timezone
+          className={`w-[100px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
+            data?.timezone,
+            getWeatherType(data?.data[0].weather.code)
           )}`}
         >
           <div className="flex items-center flex-wrap justify-around gap-x-3">

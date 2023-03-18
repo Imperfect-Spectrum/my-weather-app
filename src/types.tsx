@@ -54,3 +54,8 @@ export interface Response {
   state_code: string;
   timezone: string;
 }
+
+export interface Coords {
+  lat: number;
+  lng: number;
+}

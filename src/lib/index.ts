@@ -1,1 +1,1 @@
-export { getColor, getBg } from "./get-color";
+export { getColor, getBg, getWeatherType } from "./get-color";

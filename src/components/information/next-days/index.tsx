@@ -1,11 +1,12 @@
 import { Response } from "../../../types";
-import { getColor } from "../../../lib";
-import moment from "moment-timezone";
+import { getColor, getWeatherType } from "../../../lib";
+import { DateTime } from "luxon";
 
 export const NextDays = ({ data }: { data: Response }) => {
   const dateBuilder = (date: string) => {
-    const correctDate = new Date(date);
-    return moment(correctDate).format("ddd");
+    const correctDate = DateTime.fromISO(date);
+    const options = { weekday: "short" as const };
+    return correctDate.setLocale("en").toLocaleString(options);
   };
 
   return (
@@ -16,21 +17,39 @@ export const NextDays = ({ data }: { data: Response }) => {
         </p>
         <div className="bg-teal-50 rounded-full w-full h-1 m-auto ml-2 shadow-xl"></div>
       </div>
-      <div className="flex flex-row justify-between">
+      <div
+        className={`flex flex-row flex-wrap justify-center gap-5 rounded-xl         
+         opacity-85`}
+      >
         {data?.data.slice(1, 8).map((element, index) => (
           <div
             key={index}
-            className={`w-[45px] h-[80px] flex justify-center items-center  rounded-lg shadow-xl ${getColor(
-              data?.timezone
-            )}`}
+            className={`w-[100px] h-[100px] flex justify-center items-center  rounded-lg shadow-2xl opacity-90 ${getColor(
+              data?.timezone,
+              getWeatherType(data?.data[0].weather.code)
+            )}
+            `}
           >
             <div className="flex flex-col">
-              <p className="text-center text-white">
-                {dateBuilder(element.valid_date)}
+              <div className="flex items-center">
+                <img
+                  className="h-[40px] w-[40px] "
+                  src={`/icons/${data?.data[index].weather.icon}.png`}
+                  alt="weatherIcon"
+                />
+                <p className="text-center text-white text-xl  ">
+                  {dateBuilder(element.valid_date)}
+                </p>
+              </div>
+              <p className="text-center text-white text-xl">
+                {element.max_temp}°
               </p>
-              <p className="text-center text-white">{element.min_temp}</p>
+
               <div className="bg-teal-50 rounded-full w-full h-1 shadow-xl justify-center items-center"></div>
-              <p className="text-center text-white">{element.max_temp}</p>
+
+              <p className="text-center text-white text-xl">
+                {element.min_temp}°
+              </p>
             </div>
           </div>
         ))}

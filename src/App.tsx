@@ -1,11 +1,9 @@
-import { useState } from "react";
-import { request } from "./api";
-import { SvgSelector } from "./assets/svgSelector";
-
+import { useEffect, useState } from "react";
+import { geoRequest, request } from "./api";
+import { SvgSelector } from "./lib/svgSelector";
 import { Information } from "./components/information";
 import { getBg } from "./lib";
-
-import { Response } from "./types";
+import { Coords, Response } from "./types";
 
 // https://api.openweathermap.org/data/2.5/forecast?q={city%20name}&appid={API%20key}
 // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
@@ -16,6 +14,7 @@ import { Response } from "./types";
 function App() {
   const [query, setQuery] = useState("");
   const [data, setData] = useState<Response | null>(null);
+  const [coords, setCoords] = useState<Coords | null>(null);
 
   const search = async (evt: any) => {
     if (evt.key === "Enter") {
@@ -25,12 +24,47 @@ function App() {
     }
   };
 
+  const handleGeoClick = async () => {
+    try {
+      const position = await new Promise<GeolocationPosition>(
+        (resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject);
+        }
+      );
+      setCoords({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+    } catch (error) {
+      console.log("Error getting geolocation: ", error);
+    }
+  };
+
+  useEffect(() => {
+    if (coords) {
+      const fetchData = async () => {
+        try {
+          const data = await geoRequest(coords);
+          setData(data);
+        } catch (error) {
+          console.log("Error fetching weather data: ", error);
+        }
+      };
+      fetchData();
+    }
+  }, [coords]);
+
   return (
     <>
+      {/* ${getBg(
+          data?.timezone,
+          data?.data[0].weather.code
+        )} */}
       <div
-        className={`bg-cover bg-bottom shadow-xl ${getBg(
-          data?.timezone
-        )} min-h-screen max-h-full w-full sm:w-[25%] min-w-0 mx-auto shadow-lg`}
+        className={`bg-cover bg-bottom ${getBg(
+          data?.timezone,
+          data?.data[0].weather.code as number
+        )} shadow-xl h-[930px] w-[390px]  min-w-0 mx-auto`}
       >
         <main className="min-h-[10%] p-[20px]">
           <div className="flex justify-center items-center">
@@ -42,7 +76,10 @@ function App() {
               value={query}
               onKeyDown={search}
             ></input>
-            <button className="flex justify-center items-center">
+            <button
+              className="flex justify-center items-center  bg-slate-200 shadow-xl rounded-2xl"
+              onClick={handleGeoClick}
+            >
               <SvgSelector id={"geo"} />
             </button>
           </div>
