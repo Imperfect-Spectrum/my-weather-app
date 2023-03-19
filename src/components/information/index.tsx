@@ -6,9 +6,8 @@ import { NextDays } from "./next-days";
 import { Options } from "./options";
 
 export const Information = ({ data }: { data: Response }) => {
-  console.log(data?.data[0].weather.code);
   return (
-    <>
+    <div className="p-[20px] pt-[5px]">
       <div
         className={`h-[340px] w-[100%] flex flex-col font-mono text-white font-medium text-center drop-shadow-xl mb-5 mt-5 mr-auto ml-auto rounded-xl 
         ${getColor(
@@ -33,6 +32,6 @@ export const Information = ({ data }: { data: Response }) => {
       </div>
       <Options data={data} />
       <NextDays data={data} />
-    </>
+    </div>
   );
 };
