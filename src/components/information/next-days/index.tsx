@@ -13,7 +13,7 @@ export const NextDays = ({ data }: { data: Response }) => {
     <>
       <div className="flex ">
         <p className="text-white font-medium text-center whitespace-nowrap">
-          Next 7 days
+          Next 6 days
         </p>
         <div className="bg-teal-50 rounded-full w-full h-1 m-auto ml-2 shadow-xl"></div>
       </div>
