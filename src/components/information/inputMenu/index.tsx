@@ -6,20 +6,36 @@ import { geoRequest, request } from "../../../api";
 import { getColor, getWeatherType } from "../../../lib";
 
 type InputMenuProps = {
-  data?: Response | null;
+  data: Response | null;
   setData: React.Dispatch<React.SetStateAction<Response | null>>;
+  errorData: boolean;
+  setErrorData: React.Dispatch<React.SetStateAction<boolean>>;
 };
-export const InputMenu = ({ data, setData }: InputMenuProps) => {
+
+export const InputMenu = ({
+  data,
+  setData,
+  errorData,
+  setErrorData,
+}: InputMenuProps) => {
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [query, setQuery] = useState("");
   const [coords, setCoords] = useState<Coords | null>(null);
 
   const search = async (evt: any) => {
     if (evt.key === "Enter") {
-      const data = await request(query);
-      setData(data);
-      setQuery("");
-      toggleOverlay();
+      const newData = await request(query);
+      if (newData) {
+        setErrorData(false);
+        setData(newData);
+        setQuery("");
+        toggleOverlay();
+      } else {
+        setErrorData(true);
+        setQuery("");
+        setData(null);
+        toggleOverlay();
+      }
     }
   };
 
@@ -55,7 +71,7 @@ export const InputMenu = ({ data, setData }: InputMenuProps) => {
       };
       fetchData();
     }
-  }, [coords]);
+  }, [coords, setData]);
 
   const toggleOverlay = () => {
     setOverlayVisible(!overlayVisible);
@@ -75,9 +91,9 @@ export const InputMenu = ({ data, setData }: InputMenuProps) => {
       </button>
       {overlayVisible && (
         <>
-          <div className="fixed z-40 top-0">
+          <div className="fixed z-40 top-0 w-full sm:w-[390px]">
             <div
-              className={`pt-1 pl-4 shadow-lg animate-slideIn h-[930px] w-[390px] ${
+              className={`pt-1 pl-4 shadow-lg animate-slideIn h-[930px] w-full sm:w-[390px] ${
                 data === null
                   ? "bg-[#80c4af]"
                   : getColor(
@@ -94,13 +110,13 @@ export const InputMenu = ({ data, setData }: InputMenuProps) => {
                 <input
                   type="text"
                   placeholder="Search..."
-                  className="w-full appearance-none bg-transparent border-none outline-none p-[10px] mb-[0px] mr-[10px] bg-slate-200 hover:bg-slate-300 shadow-xl rounded-xl "
+                  className="w-full appearance-none bg-transparent border-none outline-none p-[10px] mb-[0px] mr-[10px] bg-white hover:bg-slate-300 shadow-xl rounded-xl "
                   onChange={(e) => setQuery(e.target.value)}
                   value={query}
                   onKeyDown={search}
                 ></input>
                 <button
-                  className="flex justify-center items-center  bg-slate-200 shadow-xl rounded-2xl"
+                  className="flex justify-center items-center hover:bg-slate-300 rounded-full"
                   onClick={handleGeoClick}
                 >
                   <SvgSelector id={"geo"} />

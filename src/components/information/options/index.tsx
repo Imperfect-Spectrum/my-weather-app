@@ -36,7 +36,7 @@ export const Options = ({ data }: { data: Response }) => {
               {data?.data[0].pop}
             </p>
           </div>
-          <p className="text-sm text-white font-medium">Precipitation(%)</p>
+          <p className="text-sm text-white font-medium">Rainfall(%)</p>
         </div>
         <div
           className={`w-[100px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
@@ -50,7 +50,7 @@ export const Options = ({ data }: { data: Response }) => {
               {Math.round(data?.data[0].pres)}
             </p>
           </div>
-          <p className="text-sm text-white font-medium">pressure(mb)</p>
+          <p className="text-sm text-white font-medium">Pressure(mb)</p>
         </div>
         <div
           className={`w-[100px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(
@@ -62,7 +62,7 @@ export const Options = ({ data }: { data: Response }) => {
             <SvgSelector id={"rh"} />
             <p className="text-xl text-white font-medium">{data?.data[0].rh}</p>
           </div>
-          <p className="text-sm text-white font-medium">humidity(%)</p>
+          <p className="text-sm text-white font-medium">Humidity(%)</p>
         </div>
         <div
           className={`w-[100px] h-[70px] flex flex-col justify-center items-center mb-[17px] gap-2 rounded-lg shadow-xl ${getColor(

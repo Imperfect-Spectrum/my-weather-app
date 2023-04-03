@@ -5,8 +5,6 @@ export const getColor = (
   weatherType: string | undefined
 ) => {
   const realHourse = Number(DateTime.local().setZone(timezone).toFormat("HH"));
-  console.log(weatherType);
-  console.log(realHourse);
   if (!weatherType) return "";
 
   if (weatherType === "weatherRainy") {

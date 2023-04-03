@@ -2,6 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
+    screens: {
+      sm: "437px",
+    },
     extend: {
       backgroundImage: {
         morningCloudy: "url('../public/cloudy/morning-cloudy-bg.png')",

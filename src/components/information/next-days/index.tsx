@@ -18,7 +18,7 @@ export const NextDays = ({ data }: { data: Response }) => {
         <div className="bg-teal-50 rounded-full w-full h-1 m-auto ml-2 shadow-xl"></div>
       </div>
       <div
-        className={`flex flex-row flex-wrap justify-center gap-5 rounded-xl         
+        className={`flex items-center flex-wrap justify-around gap-3 rounded-xl         
          opacity-85`}
       >
         {data?.data.slice(1, 8).map((element, index) => (

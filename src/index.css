@@ -26,18 +26,3 @@ body {
   animation-duration: 0.7s;
   animation-timing-function: ease-out;
 }
-
-@keyframes slideOut {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
-}
-
-.animate-slideOut {
-  animation-name: slideOut;
-  animation-duration: 0.7s;
-  animation-timing-function: ease-out;
-}
