@@ -13,7 +13,6 @@ export async function request(query: string) {
       `${weatherbitUrl}?&lat=${dataGeo[0].lat}&lon=${dataGeo[0].lon}&key=${process.env.REACT_APP_WEATERBIT_API_KEY}`
     );
     const data: Response = await responce.json();
-    console.log(data);
     return data;
   } catch (error) {
     return;

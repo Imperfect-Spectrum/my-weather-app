@@ -9,7 +9,7 @@ function App() {
   const [errorData, setErrorData] = useState(false);
   return (
     <div
-      className={`${
+      className={`flex min-h-screen items-center justify-center ${
         data === null
           ? "bg-[#80c4af]"
           : getColor(
@@ -26,7 +26,7 @@ function App() {
         className={`bg-cover bg-bottom ${getBg(
           data?.timezone,
           data?.data[0].weather.code as number
-        )} shadow-xl h-[930px] w-full mx-auto  sm:w-[390px]`}
+        )} shadow-xl h-full w-full mx-auto  sm:w-[390px]`}
       >
         <div className="relative">
           <InputMenu
@@ -35,13 +35,13 @@ function App() {
             errorData={errorData}
             setErrorData={setErrorData}
           />
-          {errorData === true ? (
-            <h1 className="text-center text-4xl font-extrabold leading-none tracking-tight text-gray-900 pt-[200px] ">
-              City not found
-            </h1>
-          ) : null}
-          {data?.city_name && <Information data={data} />}
         </div>
+        {errorData === true ? (
+          <h1 className="text-center text-4xl font-extrabold leading-none tracking-tight text-gray-900 pt-[200px] ">
+            City not found
+          </h1>
+        ) : null}
+        {data?.city_name && <Information data={data} />}
       </div>
     </div>
   );
