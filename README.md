@@ -1,46 +1,31 @@
-# Getting Started with Create React App
+## Weather app
+A simple weather app that allows you to view detailed weather information for today and the forecast for the next 6 days.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Check out [live]https://my-weather-app-lovat.vercel.app/)
 
-## Available Scripts
+![изображение_2023-04-05_113344874](https://user-images.githubusercontent.com/55977481/230026842-b181e386-0912-4f04-bbe1-dc7711a1884c.png)
+![изображение_2023-04-05_113402503](https://user-images.githubusercontent.com/55977481/230026905-25b00e58-e90d-46da-8988-10f00437210d.png)
+![изображение_2023-04-05_113414075](https://user-images.githubusercontent.com/55977481/230026952-f85f9303-48a6-45fc-ac9f-9c42a6135ebb.png)
 
-In the project directory, you can run:
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Application Description
+The application was created using React, TS, Tailwind.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+App is using 2 apis:
 
-### `yarn test`
+[Weatherbit](https://www.weatherbit.io/) - to get forecasts.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Openweathermap](https://openweathermap.org) - to get coordinates based on city name.
 
-### `yarn build`
+## How to run
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone this repo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<code>cd weather-app</code>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<code>Run npm install</code>
 
-### `yarn eject`
+Setup .env file with the APIs keys.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<code>Run npm start</code>
