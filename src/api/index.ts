@@ -1,7 +1,7 @@
 import { Coords, Response } from "../types";
 
 const weatherbitUrl = "https://api.weatherbit.io/v2.0/forecast/daily";
-const openweathermapUrl = "http://api.openweathermap.org/geo/1.0/";
+const openweathermapUrl = "https://api.openweathermap.org/geo/1.0/";
 
 export async function request(query: string) {
   try {

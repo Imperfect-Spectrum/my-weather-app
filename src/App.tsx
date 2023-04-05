@@ -26,7 +26,7 @@ function App() {
         className={`bg-cover bg-bottom ${getBg(
           data?.timezone,
           data?.data[0].weather.code as number
-        )} shadow-xl h-[870px] w-full mx-auto  sm:w-[390px]`}
+        )} shadow-xl h-[930px] w-full mx-auto sm:w-[390px]`}
       >
         <div className="relative">
           <InputMenu
